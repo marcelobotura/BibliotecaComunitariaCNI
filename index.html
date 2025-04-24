@@ -1,0 +1,85 @@
+<!-- Estrutura inicial do sistema de biblioteca comunitária -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Comunitária CNI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <header class="bg-white shadow p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">📚 Biblioteca CNI</h1>
+      <nav>
+        <ul class="flex gap-4 text-sm font-medium">
+          <li><a href="#catalogo" class="hover:underline">Catálogo</a></li>
+          <li><a href="#login" class="hover:underline">Área Administrativa</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="p-6 max-w-7xl mx-auto">
+    <!-- Catálogo público -->
+    <section id="catalogo" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Catálogo de Livros</h2>
+      <!-- Filtro de busca -->
+      <input type="text" placeholder="Buscar por título, autor ou gênero" class="w-full p-2 border border-gray-300 rounded mb-4">
+      <div id="livros-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Os livros serão carregados dinamicamente aqui -->
+      </div>
+    </section>
+
+    <!-- Login Administrativo -->
+    <section id="login" class="bg-white rounded-xl shadow p-6 max-w-md mx-auto">
+      <h2 class="text-xl font-semibold mb-4">Login Administrativo</h2>
+      <form id="login-form" class="flex flex-col gap-4">
+        <input type="text" id="usuario" placeholder="Usuário" class="p-2 border border-gray-300 rounded">
+        <input type="password" id="senha" placeholder="Senha" class="p-2 border border-gray-300 rounded">
+        <button type="submit" class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Entrar</button>
+      </form>
+      <p id="login-erro" class="text-red-600 mt-2 hidden">Usuário ou senha inválidos.</p>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-500 mt-12 mb-6">
+    &copy; 2025 Biblioteca Comunitária CNI. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Exemplo: carregando livros dinamicamente (mock)
+    const livros = [
+      {
+        titulo: "Dom Casmurro",
+        autor: "Machado de Assis",
+        genero: "Romance",
+        sinopse: "A história de Bentinho e Capitu.",
+        imagem: "https://via.placeholder.com/150",
+        status: "Disponível"
+      },
+      {
+        titulo: "1984",
+        autor: "George Orwell",
+        genero: "Distopia",
+        sinopse: "Futuro autoritário distópico.",
+        imagem: "https://via.placeholder.com/150",
+        status: "Emprestado"
+      }
+    ];
+
+    const container = document.getElementById('livros-container');
+    livros.forEach(livro => {
+      container.innerHTML += `
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="${livro.imagem}" alt="Capa do Livro" class="w-full h-48 object-cover rounded mb-2">
+          <h3 class="text-lg font-bold">${livro.titulo}</h3>
+          <p class="text-sm text-gray-700">Autor: ${livro.autor}</p>
+          <p class="text-sm text-gray-500">Gênero: ${livro.genero}</p>
+          <p class="mt-2 text-sm">Status: <span class="font-semibold ${livro.status === 'Disponível' ? 'text-green-600' : 'text-red-600'}">${livro.status}</span></p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
