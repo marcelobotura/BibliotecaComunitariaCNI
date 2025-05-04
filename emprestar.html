@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Empréstimo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Registrar Empréstimo</h1>
+  <form action="php/registrar_emprestimo.php" method="POST">
+    <label>ID do Usuário:
+      <input type="number" name="id_usuario" required>
+    </label>
+    <label>ID do Livro:
+      <input type="number" name="id_livro" required>
+    </label>
+    <label>Data da Devolução:
+      <input type="date" name="data_devolucao" required>
+    </label>
+    <button type="submit">Registrar</button>
+  </form>
+</body>
+</html>

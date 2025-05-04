@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="php/cadastrar_livro.php" enctype="multipart/form-data" id="form-livro">
+        <label>ISBN:
+          <input type="text" id="isbn" placeholder="Digite o ISBN">
+          <button type="button" id="buscarISBN">Buscar dados</button>
+        </label>
+        
+        <label>Título:
+          <input type="text" name="titulo" id="titulo" required>
+        </label>
+      
+        <label>Autor:
+          <input type="text" name="autor" id="autor" required>
+        </label>
+      
+        <label>Gênero:
+          <input type="text" name="genero" id="genero">
+        </label>
+      
+        <label>Editora:
+          <input type="text" name="editora" id="editora">
+        </label>
+      
+        <label>Ano:
+          <input type="number" name="ano" id="ano">
+        </label>
+      
+        <label>Sinopse:
+          <textarea name="sinopse" id="sinopse"></textarea>
+        </label>
+      
+        <label>Capa:
+          <input type="file" name="capa">
+        </label>
+      
+        <button type="submit">Cadastrar Livro</button>
+      </form>
+      <script>
+        document.getElementById("buscarISBN").addEventListener("click", function () {
+          const isbn = document.getElementById("isbn").value.trim();
+          if (!isbn) return alert("Digite um ISBN válido!");
+      
+          fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+            .then(response => response.json())
+            .then(data => {
+              if (!data.items) {
+                alert("Livro não encontrado.");
+                return;
+              }
+      
+              const book = data.items[0].volumeInfo;
+      
+              document.getElementById("titulo").value = book.title || "";
+              document.getElementById("autor").value = (book.authors || []).join(", ");
+              document.getElementById("editora").value = book.publisher || "";
+              document.getElementById("ano").value = book.publishedDate ? book.publishedDate.substring(0, 4) : "";
+              document.getElementById("sinopse").value = book.description || "";
+            })
+            .catch(() => alert("Erro ao buscar dados."));
+        });
+      </script>
+      
+</body>
+</html>

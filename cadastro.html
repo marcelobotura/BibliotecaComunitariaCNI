@@ -1,0 +1,39 @@
+<!-- cadastro.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Livros</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/stylelivros.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Biblioteca Comunitária CNI</h1>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Cadastro de Livro</h2>
+      <form action="php/cadastrar_livro.php" method="POST" enctype="multipart/form-data">
+        <label>Título: <input type="text" name="titulo" required></label>
+        <label>Autor: <input type="text" name="autor" required></label>
+        <label>Gênero: <input type="text" name="genero"></label>
+        <label>Ano: <input type="number" name="ano"></label>
+        <label>Editora: <input type="text" name="editora"></label>
+        <label>Sinopse: <textarea name="sinopse"></textarea></label>
+        <label>Capa: <input type="file" name="capa"></label>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Biblioteca Comunitária CNI</p>
+    <button id="toggle-dark">🌓 Modo Escuro</button>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
