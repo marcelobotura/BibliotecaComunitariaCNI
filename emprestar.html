@@ -6,18 +6,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Registrar Empréstimo</h1>
-  <form action="php/registrar_emprestimo.php" method="POST">
-    <label>ID do Usuário:
-      <input type="number" name="id_usuario" required>
-    </label>
-    <label>ID do Livro:
-      <input type="number" name="id_livro" required>
-    </label>
-    <label>Data da Devolução:
-      <input type="date" name="data_devolucao" required>
-    </label>
-    <button type="submit">Registrar</button>
-  </form>
+  <header><h1>📦 Registrar Empréstimo</h1></header>
+  <main>
+    <form action="php/registrar_emprestimo.php" method="POST" class="form-section">
+      <label>ID do Usuário:
+        <input type="number" name="id_usuario" required>
+      </label>
+      <label>ID do Livro:
+        <input type="number" name="id_livro" required>
+      </label>
+      <label>Data para Devolução:
+        <input type="date" name="data_devolucao" required>
+      </label>
+      <button type="submit">Registrar</button>
+    </form>
+  </main>
 </body>
 </html>

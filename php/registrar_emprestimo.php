@@ -10,8 +10,8 @@ $sql = "INSERT INTO emprestimos (id_usuario, id_livro, data_emprestimo, data_dev
         VALUES ('$id_usuario', '$id_livro', '$data_emprestimo', '$data_devolucao')";
 
 if ($conn->query($sql)) {
-  echo "Empréstimo registrado com sucesso.";
+  echo "✅ Empréstimo registrado com sucesso.";
 } else {
-  echo "Erro ao registrar: " . $conn->error;
+  echo "❌ Erro ao registrar: " . $conn->error;
 }
 ?>
