@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Livro | Biblioteca CNI</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <form method="POST" action="php/cadastrar_livro.php" enctype="multipart/form-data" id="form-livro">
+  <header>
+    <h1>📚 Cadastro de Livro</h1>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <form method="POST" action="php/cadastrar_livro.php" enctype="multipart/form-data" id="form-livro">
         <label>ISBN:
           <input type="text" id="isbn" placeholder="Digite o ISBN">
           <button type="button" id="buscarISBN">Buscar dados</button>
@@ -42,30 +49,15 @@
       
         <button type="submit">Cadastrar Livro</button>
       </form>
-      <script>
-        document.getElementById("buscarISBN").addEventListener("click", function () {
-          const isbn = document.getElementById("isbn").value.trim();
-          if (!isbn) return alert("Digite um ISBN válido!");
-      
-          fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
-            .then(response => response.json())
-            .then(data => {
-              if (!data.items) {
-                alert("Livro não encontrado.");
-                return;
-              }
-      
-              const book = data.items[0].volumeInfo;
-      
-              document.getElementById("titulo").value = book.title || "";
-              document.getElementById("autor").value = (book.authors || []).join(", ");
-              document.getElementById("editora").value = book.publisher || "";
-              document.getElementById("ano").value = book.publishedDate ? book.publishedDate.substring(0, 4) : "";
-              document.getElementById("sinopse").value = book.description || "";
-            })
-            .catch(() => alert("Erro ao buscar dados."));
-        });
-      </script>
-      
-</body>
-</html>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <?= date('Y') ?> Biblioteca Comunitária CNI</p>
+    <button onclick="toggleModoEscuro()">🌓 Modo Escuro</button>
+  </footer>
+  
+  <script src="js/isbn.js"></script>
+  <script src="js/script.js"></script>
+  </body>
+  </html>
