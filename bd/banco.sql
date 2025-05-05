@@ -48,3 +48,5 @@ INSERT INTO emprestimos (id_usuario, id_livro, data_emprestimo, data_devolucao, 
 INSERT INTO emprestimos (id_usuario, id_livro, data_emprestimo, data_devolucao, devolvido) VALUES (1, 19, '2024-04-10', '2024-04-24', 1);
 INSERT INTO emprestimos (id_usuario, id_livro, data_emprestimo, data_devolucao, devolvido) VALUES (9, 3, '2024-03-15', '2024-03-29', 0);
 INSERT INTO emprestimos (id_usuario, id_livro, data_emprestimo, data_devolucao, devolvido) VALUES (4, 26, '2024-04-01', '2024-04-15', 1);
+
+
